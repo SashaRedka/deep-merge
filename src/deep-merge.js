@@ -19,6 +19,10 @@ function deepMerge(obj1, obj2) {
 }
 
 function deepCopy(item) {
+  if (!isObject(item) && !isArray(item)) {
+    throw new Error("deepCopy: item must be an object or an array");
+  }
+
   const result = isArray(item) ? [...item] : { ...item };
 
   for (let i of Object.keys(result)) {
